@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "package": "net.oldschoolminecraft.hydra.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "MixinMinecraft",
+    "MixinGuiMainMenu",
+    "entity.MixinEntityOtherPlayerMP",
+    "entity.MixinEntityPlayerSP",
+    "entity.MixinEntityPlayer",
+    "render.MixinPlayerRenderer",
+    "render.MixinRenderEngine",
+    "render.MixinItemRenderer",
+    "net.MixinClientPlayNetworkHandler",
+    "net.MixinServerPlayNetworkHandler",
+    "misc.MixinThreadDownloadResources",
+    "misc.MixinThreadCheckHasPaid"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

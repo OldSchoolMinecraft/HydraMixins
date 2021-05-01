@@ -51,6 +51,11 @@ repositories {
 minecraft {
 }
 
+configurations
+{
+	extraLibs
+}
+
 dependencies {
 	// fabric loader requires log4j, guava, and gson
 	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.1'
@@ -66,6 +71,10 @@ dependencies {
 	implementation 'org.ow2.asm:asm-commons:9.0'
 	implementation 'org.ow2.asm:asm-tree:9.0'
 	implementation 'org.ow2.asm:asm-util:9.0'
+
+	// discord rpc
+	compile 'com.github.Vatuu:discord-rpc:1.6.2'
+	extraLibs 'com.github.Vatuu:discord-rpc:1.6.2'
 
 	// to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -83,6 +92,14 @@ dependencies {
 	compile 'org.jetbrains:annotations:16.0.2'
 
 	modImplementation "com.github.minecraft-cursed-legacy:cursed-fabric-loader:${project.loader_version}"
+}
+
+jar
+{
+	from
+	{
+		configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
+	}
 }
 
 processResources {
